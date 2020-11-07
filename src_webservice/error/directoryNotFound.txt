@@ -1,0 +1,12 @@
+The directory was not found!!
+
+Check your Nextcloud instance for the right directory system:
+
+results
+scripts
+uploads
+directory
+
+Or check your Server for the right mountpath:
+
+/media/cloud/.

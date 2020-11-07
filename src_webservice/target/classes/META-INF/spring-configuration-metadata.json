@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "file",
+      "type": "com.ur.seminar.app.property.FileStorageProperties",
+      "sourceType": "com.ur.seminar.app.property.FileStorageProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "file.directory",
+      "type": "java.lang.String",
+      "sourceType": "com.ur.seminar.app.property.FileStorageProperties"
+    },
+    {
+      "name": "file.download",
+      "type": "java.lang.String",
+      "sourceType": "com.ur.seminar.app.property.FileStorageProperties"
+    },
+    {
+      "name": "file.errors",
+      "type": "java.lang.String",
+      "description": "Description for file.errors.",
+      "sourceType": "com.ur.seminar.app.property.FileStorageProperties"
+    },
+    {
+      "name": "file.scripts",
+      "type": "java.lang.String",
+      "description": "Description for file.scripts.",
+      "sourceType": "com.ur.seminar.app.property.FileStorageProperties"
+    },
+    {
+      "name": "file.upload",
+      "type": "java.lang.String",
+      "sourceType": "com.ur.seminar.app.property.FileStorageProperties"
+    }
+  ],
+  "hints": []
+}

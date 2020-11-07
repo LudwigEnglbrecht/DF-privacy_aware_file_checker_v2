@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Privacy File Checker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    <h1>Privacy File Checker Control Panel</h1>
+    </div>
+        <br />
+    <div class="container">
+    <h3>Add Files to the Nextcloud:</h3>
+    <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+        <label for="inputUploads">File-Upload:</label>
+        <input type="file" name="files"  multiple id="inputUploads"/>
+        <button class="btn btn-primary" type="submit" id="submitUpload" >Upload</button>
+    </form>
+        <br />
+        <form method="POST" enctype="multipart/form-data" id="directoryUploadForm">
+            <label for="directoryUpload">Directory-upload:</label>
+            <input type="file" name="files" multiple id="directoryUpload"/>
+            <button class="btn btn-primary" type="submit" id="submitDirectory">Add</button>
+        </form>
+        <br />
+        <form method="POST" enctype="multipart/form-data" id="scriptUploadForm">
+            <label for="directoryUpload">Script-upload:</label>
+            <input type="file" name="files" multiple id="scriptUpload"/>
+            <button class="btn btn-primary" type="submit" id="submitScript">Upload</button>
+        </form>
+    </div>
+
+    <br />
+    <br />
+    <div class="container">
+    <h3>Compare an uploaded file with the directory:</h3>
+    <form method="POST" enctype="multipart/form-data" id="calculateForm">
+        <label for="fileName">Name of the file: </label>
+        <br />
+        <input type="text" name="fileName" id="fileName" placeholder="test01.msg"/>
+        <br />
+        <button class="btn btn-primary" type="submit" id="submitCalculate">Calculate</button>
+    </form>
+        <br />
+        <br />
+        <label for="ListBorder">List of uploaded Files:</label>
+        <div style="border:1px solid #ccc;padding: 5px;">
+        <span id="ListBorder" >
+            <ul id="uploadList">
+            </ul>
+        </span>
+        </div>
+        <button class="btn btn-primary" type="button" id="showUploadList">Refresh List</button>
+        <button class="btn btn-primary" type="button" id="downloadUploads" disabled="true">Download Folder</button>
+        <br />
+        <br />
+        <br />
+        <label for="ListBorder">List of calculated Files:</label>
+        <div style="border:1px solid #ccc;padding: 5px;">
+        <span id="resultsBorder" >
+            <ul id="resultsList">
+            </ul>
+        </span>
+        </div>
+        <button class="btn btn-primary" type="button" id="showResultsList">Refresh List</button>
+        <button class="btn btn-primary" type="button" id="downloadResults" disabled="true">Download Folder</button>
+        <br />
+        <br />
+        <label for id="getResultsFileName">Download a single Result File:</label><br />
+        <input type="text" name="fileName" id="getResultFileName" placeholder="output01.csv" />
+        <button class="btn btn-primary" type="button" id="downloadSingleResult">Download</button>
+        <br />
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <h3>Use a Python Script</h3>
+        <form method="POST" enctype="multipart/form-data" id="externalForm">
+            <label for="externalInput">Name of the Script:</label><br />
+            <input type="text" name="fileName" id="externalInput" placeholder="script.py"> <br />
+            <label for="externalFileGoal">Name of a potential malicious file</label><br />
+            <input type="text" name="goal" id="externalFileGoal" placeholder="test.pdf">
+            <button class="btn btn-primary" type="submit" id="externalCallButton">Script</button>
+        </form>
+        <br />
+        <label for="scriptListBorder">List of Scripts in the directory:</label>
+        <div style="border:1px solid #cccc;padding: 5px;">
+            <span id="scriptListBorder">
+                <ul id="scriptList">
+                </ul>
+            </span>
+        </div>
+        <button class="btn btn-primary" type="button" id="showScriptList">Refresh List</button>
+        <br />
+        <br />
+        <br />
+    </div>
+    <div class="container">
+    <h3>Delete a single Entry or clear an entire directory</h3>
+    <br />
+    <form method="POST" enctype="multipart/form-data" id="deleteEntryForm">
+        <label for="deleteFileName">Type the name of single file to delete:</label>
+        <br />
+        <input type="text" name="deleteFileName" id="deleteFileName" placeholder="test01.msg"/>
+        <br />
+        <button class="btn btn-primary" type="submit" id="deleteEntryButton">Delete File</button>
+    </form>
+    <br />
+        <label for="directoryListBorder">List of Files in the directory:</label>
+        <div style="border:1px solid #cccc;padding: 5px;">
+            <span id="directoryListBorder">
+                <ul id="directoryList">
+                </ul>
+            </span>
+        </div>
+        <button class="btn btn-primary" type="button" id="showDirectoryList">Refresh List</button>
+        <button class="btn btn-primary" type="button" id="downloadDirectory" disabled="true">Download</button>
+        <br />
+        <br />
+    <form method="POST" enctype="multipart/form-data" id="clearForm">
+        <label for="clearFiles">Choose the directory you want to clear:</label>
+        <br />
+        <input list="directories" name="directoryName" id="clearFiles" />
+        <datalist id="directories">
+            <option value="uploads">
+            <option value="directory">
+            <option value="results">
+        </datalist>
+        <br />
+        <button class="btn btn-primary" type="submit" id="clearDirectory">Clear Directory</button>
+        <br />
+        <br />
+    </form>
+        <br />
+    <label for="result">Response to clear directory</label>
+    <div style="border:1px solid #ccc;padding: 5px;">
+        <span id="result"></span>
+    </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+</html>

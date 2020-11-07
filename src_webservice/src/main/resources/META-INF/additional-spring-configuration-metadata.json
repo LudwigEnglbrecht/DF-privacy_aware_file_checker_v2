@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "file.scripts",
+      "type": "java.lang.String",
+      "description": "Description for file.scripts."
+    },
+    {
+      "name": "file.errors",
+      "type": "java.lang.String",
+      "description": "Description for file.errors."
+    }
+  ] }
